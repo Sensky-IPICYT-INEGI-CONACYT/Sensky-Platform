@@ -1,0 +1,27 @@
+[
+  {
+    "name": "PlumeLabs Pollutants Collector",
+    "path": "/Users/emiliohdez/Projects/You-i Lab/SenSky-Project/src/main/scripts/PlumeLabs_PollutantsCollector.jl",
+    "params": [
+      1608342495
+    ],
+    "command": "julia"
+  },{
+    "name": "PlumeLabsPositionsCollector",
+    "path": "/Users/emiliohdez/Projects/You-i Lab/SenSky-Project/src/main/scripts/PlumeLabs_PositionsCollector.jl",
+    "params": [
+      1632639753
+    ],
+    "command": "julia"
+  },{
+    "name": "Surveys Preprocessor",
+    "path": "/Users/emiliohdez/Projects/You-i Lab/SenSky-Project/src/main/scripts/EvidencesPreprocessor.jl",
+    "params": [
+      1624659496124,
+      1632584330921,
+      "/var/www/html/sensky_store",
+      "/var/www/html/sensky_store/surveys_resume.csv"
+    ],
+    "command": "julia"
+  }
+]

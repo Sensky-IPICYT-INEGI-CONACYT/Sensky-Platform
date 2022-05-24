@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Dashboard | SenSky</title>
+
+
+
+    <link rel="stylesheet" th:href="@{/Assets/css/reset.css}"/>
+    <link rel="stylesheet" th:href="@{/Assets/css/stylesv0.css}"/>
+    <link rel="stylesheet" th:href="@{/Assets/css/leaflet.css}"/>
+    <link rel="stylesheet" th:href="@{/Assets/css/hamburgers.css}"/>
+    <link
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            rel="stylesheet"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap"
+            rel="stylesheet"
+    />
+</head>
+<body>
+
+<span id="surveys-data" th:text="${surveysData}" style="display: none"></span>
+
+<main>
+    <div id="nav-bar">
+        <div class="left">
+            <button
+                    class="hamburger hamburger--arrow"
+                    type="button"
+                    onclick="toggleSideBar()"
+            >
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+            </button>
+            <a href="#"><img th:src="@{/Assets/img/logo/logo.png}" alt="SenSky Logo" /></a>
+        </div>
+        <div class="right">
+            <button><i class="fa fa-power-off"></i> salir</button>
+        </div>
+    </div>
+    <div id="side-bar">
+        <div class="container">
+            <img  th:src="@{/Assets/img/profile.jpg}" alt="profile picture" />
+        </div>
+        <div class="container">
+            <div class="item" onclick="displayContent('map')">
+                <p><i class="fa fa-globe"></i> Mapa</p>
+            </div>
+            <div class="item" onclick="displayContent('statistics')">
+                <p><i class="fa fa-pie-chart"></i> Gráficas</p>
+            </div>
+            <div class="item" onclick="downloadCSV()">
+                <p><i class="fa fa-arrow-down"></i> Descargar</p>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+        <div id="map" class="visible"></div>
+        <div id="statistics" class="container">
+            <div class="header">
+                <label for="surveys-list">Seleccione una encuesta:</label>
+                <select id="surveys-list" onchange="filterCharts(this)">
+                    <option value="1" selected>Niños (pre)</option>
+                    <option value="3">Niños (post)</option>
+                    <option value="2">Adultos (pre)</option>
+                    <option value="4">Adultos (post)</option>
+                </select>
+            </div>
+            <div class="body"></div>
+        </div>
+        <div id="downloads">Este usuario no tiene permisos suficientes para realizar una descarga de datos</div>
+    </div>
+    <div id="footer" class="slider-container">
+        <p id="fecha-inicial">0</p>
+        <p id="fecha-final">500</p>
+        <div id="slider-range"></div>
+    </div>
+</main>
+
+<script type="application/javascript" th:src="@{/Assets/js/jquery-3.4.1.min.js}"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="application/javascript" th:src="@{/Assets/js/leaflet.js}"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script type="application/javascript" th:src="@{/Assets/js/d3.layout.cloud.js}"></script>
+<script type="application/javascript" th:src="@{/Assets/js/Charts.js}"></script>
+<script type="application/javascript" th:src="@{/Assets/js/MapManagement.js}"></script>
+
+
+
+<script>
+
+    let dataSource = document.getElementById("surveys-data");
+    let data = dataSource.innerHTML;
+    dataSource.remove();
+
+    let mapFrame = [];
+    let frame = [];
+
+    $(function () {
+
+
+
+
+        setupMap();
+        let rows = data.split("||");
+        let headers = rows[0].split(";");
+        for (let i = 1; i < rows.length; i++) {
+            let rowCells = rows[i].split(";");
+            if (rowCells.length > 1) {
+                let dataUnit = {};
+                for (let j = 0; j < headers.length; j++) {
+                    dataUnit[headers[j]] = rowCells[j];
+                }
+                frame.push(dataUnit);
+            }
+
+
+        }
+
+        mapFrame = frame.slice();
+
+
+        loadSurveys();
+
+        setupTimeWindowSlider();
+        buildMapMakers();
+        //buildCharts(document.querySelector("#surveys-list").value);
+    });
+
+    function buildMapMakers() {
+        clearMarkers();
+        mapFrame.forEach( function (row) {
+            addMapMarker([parseFloat(row["latitude"]), parseFloat(row["longitude"])], row["surveyKey"]);
+        })
+    }
+
+    function updateMapMarkers( leftTimestamp, rightTimestamp) {
+        mapFrame = frame.filter( (row) => {
+            let timestamp = parseInt(row["capturedTimestamp"]);
+            return timestamp >= leftTimestamp && timestamp <= rightTimestamp;
+        })
+        buildMapMakers();
+    }
+
+    function setupTimeWindowSlider() {
+        let [minTimestamp, maxTimestamp] = getTimeWindow(mapFrame);
+        $( "#slider-range" ).slider({
+            range: true,
+            min: minTimestamp,
+            max: maxTimestamp,
+            values: [ minTimestamp, maxTimestamp ], //Aquí va la fecha de la primera evidencia y la de la última
+            slide: function( event, ui ) {
+                let [newMin, newMax] = [parseInt(ui.values[0]), parseInt(ui.values[1])];
+                updateMapMarkers(newMin, newMax);
+                $( "#fecha-inicial" ).text( timestampToDateString(newMin) );
+                $( "#fecha-final" ).text( timestampToDateString(newMax) );
+
+            }
+        });
+        console.log("current: ", $( "#slider-range" ).slider( "values", 0 ))
+        $( "#fecha-inicial" ).text( timestampToDateString($( "#slider-range" ).slider( "values", 0 )));
+        $( "#fecha-final" ).text( timestampToDateString($( "#slider-range" ).slider( "values", 1 )));
+    }
+
+    function timestampToDateString(timestamp) {
+        let date = new Date(timestamp);
+
+        return ('0' + date.getDate()).slice(-2) + '/'
+            + ('0' + (date.getMonth() + 1)).slice(-2) + '/'
+            + date.getFullYear()
+            + " " + ("0" + date.getHours()).slice(-2) + "hr";
+    }
+
+    function getTimeWindow(dataframe) {
+        let timestamps = dataframe.map( function (evidence) {
+            return evidence["capturedTimestamp"];
+        })
+        return [Math.min(...timestamps), Math.max(...timestamps)];
+    }
+
+    function toggleSideBar() {
+        let node = "button.hamburger";
+        $(node).toggleClass("is-active");
+        if ($(node).hasClass("is-active")) {
+            showSideBar();
+        } else {
+            hideSideBar();
+        }
+    }
+
+    function showSideBar() {
+        $("#side-bar").addClass("visible");
+    }
+
+    function hideSideBar() {
+        $("#side-bar").removeClass("visible");
+    }
+
+    function displayContent(id) {
+        $("#content>div.visible").removeClass("visible");
+        $("#" + id).addClass("visible");
+        toggleSideBar();
+
+        if (id == "statistics") {
+            filterCharts($("#surveys-list").children("option:selected")[0]);
+        }
+    }
+
+    function downloadCSV() {
+        var downloadLink = document.createElement("a");
+        var blob = new Blob(["\ufeff", data]);
+        var url = URL.createObjectURL(blob);
+        downloadLink.href = url;
+        downloadLink.download = "data.csv";
+
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+
+    }
+
+</script>
+
+</body>
+</html>

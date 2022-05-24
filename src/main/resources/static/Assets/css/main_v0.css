@@ -1,0 +1,579 @@
+*
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body,
+html 
+{
+  width: 100%;
+  height: 100%;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+/***********************************
+** Navbar styles
+***********************************/
+#nav
+{
+	position: absolute;
+	right: 0%;
+	padding: 0.5% 0.5% 0 0;
+	height: 7%;
+	width: 100%;
+	z-index: 2;
+}
+
+#nav a 
+{
+	font-size: 1.5em;
+}
+
+#bt1 a
+{
+	text-decoration: none;
+	color: white;
+}
+
+#bt2 a
+{
+	text-decoration: none;
+	color: white;
+}
+
+button
+{
+	float: right;
+	margin: 0 1rem;
+}
+
+#bt1:hover
+{
+	background-color: white;
+	transition: all .5 ease;
+	opacity: 1;
+}
+
+#bt1:hover > a
+{
+	color: black;
+}
+
+#bt2:hover
+{
+	background-color: white;
+	transition: all .5 ease;
+	opacity: 1;
+}
+
+#bt2:hover > a
+{
+	color: black;
+}
+
+.nav-changed
+{
+    -webkit-transition: background 550ms ease-in;
+    -moz-transition: background 550ms ease-in;
+    -o-transition: background 550ms ease-in;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
+}
+
+.nav-changed button
+{
+	opacity: 1;
+}
+
+/***********************************
+** Intro Styles
+***********************************/
+
+h3
+{
+	font-size: 1.6em;
+	text-align: center;
+	color: white;
+	margin-bottom: 1em;
+	margin-top: 4em;
+	font-weight: bold;
+}
+
+button
+{
+  background-color: #06315c;
+  border: none;
+  color: white;
+  padding: 0.7em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8em;
+  border-radius: 12px;
+}
+
+#intro
+{
+    min-width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    background-image: url(../x1/foto_fondo-100_auto_x2_colored_toned.jpg);
+    background-size: cover;
+    display: flex;
+}
+
+.div-logo
+{
+	position: absolute;
+	height: 100%;
+	top: calc(100% - 70%);
+	left: calc(100% - 70%);
+}
+
+.logo
+{
+	width: 100%;
+}
+
+.descriptions
+{
+	z-index: 1;
+	height: 20%;
+	margin: auto;
+	padding-top: 20%;
+}
+
+.app-playstore
+{
+	box-sizing: border-box;
+	display: inline-flex;
+}
+
+.app-playstore-link-image
+{
+	width: 200px;
+	height: auto;
+	border: 0;
+	margin: 0 0 15px;
+	padding: 0;
+}
+
+.app-playstore-link-image:hover
+{
+	filter: brightness(140%);
+}
+
+.redes
+{
+	height: 20%;
+	box-sizing: border-box;
+	position: absolute;
+	top: 77vh;
+	left: 88vw;
+}
+
+.redes img
+{
+	width: 40%;
+	padding-right: 0.4em;
+}
+
+.redes img:hover
+{
+	filter: brightness(180%);
+}
+
+/***********************************
+** Second Section Styles
+***********************************/
+
+.text-title
+{
+	color: #558cc2;
+	font-weight: bold;
+	margin-top: 2em;
+	text-align: center;
+	font-size: 3em;
+	padding: 0 0.5em 0 0.5em;
+}
+
+.text-subtitle
+{
+	font-size: 1.7em;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+/* GRID */
+.grid-wrapper {
+    display: grid;
+    grid-gap: 40px;
+    grid-template-columns: 30% 30% 30%;
+    margin-top: 3.5em;
+    margin-bottom: 3em;
+    padding-left: calc(100% - 92%);
+    padding-right: calc(100% - 97%);
+}
+
+.box
+{
+	border-radius: 0.7em;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.12);
+    height: 25em;
+    transition: all .5s ease;
+    padding: 2em;
+    display: grid;
+}
+
+.box p
+{
+	text-align: center;
+	font-size: 1em;
+	color: #395166;
+}
+
+.box > .text-subtitle
+{
+	 color: #395166;
+	 font-size: 1.6em;
+}
+
+.box .description-p
+{
+	margin: 0;
+}
+
+.box:hover
+{
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.box > img {
+    margin-bottom: 1em;
+    justify-self: center;
+    align-self: center;
+}
+
+
+#explanation > p:nth-child(3)
+{
+	padding: 0 7% 0 7%;
+	word-spacing: 10px;
+	font-size: 1em;
+	color: #395166;
+	line-height: 1.6;
+}
+
+.fade-in 
+{
+    opacity: 0;
+    transition: opacity 700ms ease-in;
+}
+
+.fade-in.appear
+{
+    opacity: 1;
+}
+
+.swiper-container, .swiper-wrapper
+{
+	width: 100%;
+	display: none;
+}
+
+.swiper-container-3d .swiper-slide-shadow-left
+{
+	background-image: linear-gradient(to left,rgba(0,0,0,.1),rgba(0,0,0,0));
+}
+
+.swiper-container-3d .swiper-slide-shadow-right
+{
+	background-image: linear-gradient(to right,rgba(0,0,0,.1),rgba(0,0,0,0));
+}
+
+.swiper-button-next, .swiper-button-prev
+{
+	color: #6288ae;
+}
+
+.swiper-button-next:hover, .swiper-button-prev:hover
+{
+	filter: brightness(120%);
+}
+
+/***********************************
+** Third Section Styles
+***********************************/
+
+#damage
+{
+	background-color: #558cc2;
+	min-width: 100%;
+	padding-bottom: 5rem;
+}
+
+#damage p 
+{
+	color: white;
+	line-height: 1.3;
+}
+
+.title-test
+{
+	padding: 1% 0 0 1%;
+	color: white;
+	text-align: left;
+	font-size: 2em;
+}
+
+
+.prueba
+{
+	font-size: 1.3em;
+	font-weight: lighter;
+}
+
+.card
+{
+	padding-left: 1em;
+}
+
+.cel:hover
+{
+	-webkit-transform: rotate(19deg);
+    -moz-transform: rotate(19deg);
+    -o-transform: rotate(19deg);
+    transform: rotate(19deg);
+}
+
+.columns-flex
+{
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2em;
+	margin-top: 2em;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+.columns-flex > *
+{
+	flex-basis: calc((15em - 100%) * 999);
+	flex-grow: 1;
+	flex-shrink: 1;
+}
+
+
+/***********************************
+** Footer Styles
+***********************************/
+
+footer
+{
+	background-color: #bedcfa;
+	text-align: center;
+	padding-top: 6em;
+	min-width: 100%;
+	height: 14em;
+}
+
+.redes-footer > a
+{
+	margin-right: 10px;
+}
+
+#suscribe-footer
+{
+	display: inline-grid;
+	background-color: #06315c;
+	border-radius: 10px;
+	width: 28%;
+	position: absolute;
+	margin-top: -10%;
+	margin-left: -13%;
+	padding: 0.2em;
+}
+
+#suscribe-footer > label
+{
+	color: white;
+	font-size: 1.3em;
+}
+
+#suscribe-footer > input
+{
+	height: 3em;
+	border-radius: 7px;
+	border-color: white;
+	margin: 0 0 7% 10%;
+	width: 80%;
+}
+
+.redes-footer
+{
+	padding: 1% 0 1% 0;
+}
+
+.redes-footer img:hover
+{
+	filter: brightness(160%);
+}
+
+.copyright
+{
+	font-size: 0.9em;
+}
+
+/***********************************
+** Media Queries
+***********************************/
+
+/* Extra large devices (desktops, 971px to 1280px) */
+@media only screen and (min-width: 971px) and (max-width:1300px) 
+{
+	.div-logo
+	{
+		top: 30%;
+		left: 22%;
+	}
+
+	.descriptions
+	{
+		padding-top: 30%;
+	}
+
+	#suscribe-footer
+	{
+		position: absolute;
+		margin-top: -10%;
+		margin-left: -13%;
+	}
+}
+
+@media only screen and (max-width: 900px) {
+	.grid-wrapper
+    {
+    	display: none;
+    }
+
+    .swiper-container, .swiper-wrapper
+	{
+		display: flex;
+	}
+}
+
+/* Large devices (desktops, 701px to 970px) */
+@media only screen and (min-width: 701px) and (max-width:970px) 
+{
+	.div-logo
+	{
+		left: calc((100% - 80%) / 1.5);
+	}
+
+	.descriptions
+	{
+		padding-top: 30%;
+	}
+
+	.redes
+    {
+    	top: 84vh;
+    	left: 45vw;
+    }
+
+	#suscribe-footer
+	{
+		position: absolute;
+		margin-top: -20%;
+		margin-left: -13%;
+	}
+}
+
+@media only screen and (max-width: 700px) { /* Responsividad de la pantalla */
+	.div-logo
+	{
+		top: 25%;
+		left: 10%;
+	}
+
+    .prueba
+    {
+    	font-size: 1em;
+    	padding: 0 7% 0 7%;
+		word-spacing: 10px;
+		line-height: 1.3;
+    }
+
+    .descriptions img
+    {
+    	margin-left: 16vw;
+    }
+
+    #cel-div
+	{
+		display: none;
+	}
+
+    .redes
+    {
+    	top: calc(100% - 20%);
+    	left: calc(100% - 55%);
+    }
+
+    #suscribe-footer
+	{
+		position: absolute;
+		margin-top: -23%;
+		margin-left: -25%;
+		width: 50%;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.div-logo
+	{
+		top: 30%;
+		left: 4%;
+	}
+
+	.descriptions
+	{
+		padding-top: 40%;
+		margin-left: 4%;
+	}	
+}
+
+@media only screen and (min-width: 401px) and (max-width:599px) {
+	#suscribe-footer
+	{
+		margin-top: -27%;
+	}
+}
+
+@media only screen and (min-width: 300px) and (max-width:400px) {
+	.div-logo 
+	{
+		top: 25%;
+		left: 4%;
+	}
+
+	.redes
+	{
+		top: calc(100% - 10%);
+		left: calc(100% - 60%);
+		width: 30%;
+	}
+
+	.text-title
+	{
+		font-size: 2.3em;
+	}
+
+	#suscribe-footer
+	{
+		margin-top: -45%;
+	}
+}

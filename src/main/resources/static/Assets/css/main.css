@@ -1,0 +1,536 @@
+* 
+{
+	margin: 0;
+	padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body 
+{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #bedcfa;
+    font-family: 'Noto Sans JP', sans-serif;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+/***********************************
+** Navbar styles
+***********************************/
+
+#nav
+{
+	padding: 2em 8vw;
+	display: flex;
+    justify-content: center;
+}
+
+#bt1 > a , #bt2 > a
+{
+	color: #fff;
+	text-decoration: none;
+}
+
+#bt1, #bt2
+{
+	float: right;
+    padding: 5px 10px;
+    background-color: #06305c;
+    border-radius: 15px;
+    margin: 0 5px;
+}
+
+#bt1:hover, #bt2:hover
+{
+	background-color: #fff;
+	transition: all .5 ease;
+}
+
+#bt1:hover > a, #bt2:hover > a
+{
+	color: black;
+}
+
+
+/***********************************
+** Intro Styles
+***********************************/
+
+#intro__container
+{
+	min-height: 100vh;
+	background-image: url(../1x/foto_fondo-100_auto_x2_colored_toned.jpg);
+    background-size: cover;
+}
+
+.div-logo
+{
+	display: block;
+	width: 100%;
+}
+
+.logo
+{
+	width: 100%;
+}
+
+h3
+{
+	color: #fff;
+	font-weight: bold;
+}
+
+.descriptions
+{
+	display: block;
+}
+
+.app-playstore-link-image
+{
+	width: 40%;
+}
+
+.app-playstore-link-image:hover
+{
+	filter: brightness(140%);
+}
+
+.redes
+{
+	display: block;
+	padding-bottom: 1.5em;
+}
+
+.redes img:hover
+{
+	filter: brightness(180%);
+}
+
+
+
+/***********************************
+** Second Section Styles
+***********************************/
+#explanation
+{
+	background-color: #fff;
+	padding: 1% 8vw;
+}
+
+.text-title
+{
+	color: #558cc2;
+	font-weight: bold;
+	margin-top: 1em;
+	font-size: 2rem;
+    padding: .5em;
+}
+
+.text-subtitle
+{
+	font-size: 1.7em;
+	font-weight: bold;
+	margin-bottom: 1em;
+	color: #06315c;
+}
+
+#explanation > p:nth-child(3)
+{
+	text-align: initial;
+	word-spacing: 10px;
+	font-size: 1em;
+	color: #395166;
+	line-height: 1.6;
+}
+
+.grid-wrapper
+{
+	display: none;
+}
+
+.box
+{
+	border-radius: 0.7em;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.12);
+    height: 25em;
+    transition: all .5s ease;
+    padding: 1.5em;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.box:hover
+{
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.box img
+{
+	margin-bottom: 1em;
+	width: 50%;
+}
+
+.box p
+{
+	text-align: center;
+	font-size: 1em;
+	color: #395166;
+}
+
+.box > .text-subtitle
+{
+	 color: #395166;
+	 font-size: 1.6em;
+}
+
+.box .description-p
+{
+	margin: 0;
+}
+
+.swiper-container, .swiper-wrapper
+{
+	width: 100%;
+}
+
+.swiper-container-3d .swiper-slide-shadow-left
+{
+	background-image: linear-gradient(to left,rgba(0,0,0,.1),rgba(0,0,0,0));
+}
+
+.swiper-container-3d .swiper-slide-shadow-right
+{
+	background-image: linear-gradient(to right,rgba(0,0,0,.1),rgba(0,0,0,0));
+}
+
+.swiper-button-next, .swiper-button-prev
+{
+	color: #6288ae;
+}
+
+.swiper-button-next:hover, .swiper-button-prev:hover
+{
+	filter: brightness(120%);
+}
+
+/***********************************
+** Third Section Styles
+***********************************/
+
+#damage
+{
+	background-color: #558cc2;
+	padding: 5em 8vw;
+}
+
+#damage p
+{
+	color: #fff;
+	line-height: 1.3;
+	text-align: initial;
+	font-size: 1em;
+	word-spacing: 10px;
+}
+
+#damage .title-test
+{
+	font-weight: 900;
+	font-size: 1.05em;
+}
+
+#cel-div
+{
+	display: none;
+}
+
+/***********************************
+** Footer Styles
+***********************************/
+
+footer
+{
+	background-color: #bedcfa;
+	height: 40%;
+	max-height: calc(100% - 40%);
+}
+
+#suscribe-footer
+{
+    background-color: #06305c;
+    border-radius: 15px;
+    padding: 7% 2%;
+    position: relative;
+    top: -10%;
+    max-width: 80%;
+	left: 50%;
+    transform: translateX(-50%);
+}
+
+#suscribe-footer > label
+{
+	color: white;
+	font-size: 1em;
+	display: block;
+}
+
+#suscribe-footer > input
+{
+	height: 3em;
+	border-radius: 4px;
+	border-color: white;
+	width: 80%;
+	padding: 0 10px;
+}
+
+.redes-footer
+{
+	padding: 4% 1%;
+}
+
+.redes-footer img:hover
+{
+	filter: brightness(160%);
+}
+
+.copyright
+{
+	font-weight: lighter;
+	font-size: 0.8em;
+}
+
+/***********************************
+** Media Queries
+***********************************/
+
+@media only screen and (min-width: 701px)
+{
+	/***********************************
+	** Third Section Styles
+	***********************************/
+
+	#nav
+{
+    justify-content: flex-end;
+}
+
+	.text-title
+	{
+		font-size: 2.3rem;
+	}
+
+
+	#damage .title-test:nth-child(1)
+	{
+		padding-left: 4%;
+	}
+
+	
+
+	#cel-div
+	{
+		display: unset;
+	}
+
+	.cel
+	{
+	    transform: rotate(0);
+		transition: all .5s ease;
+	}
+	.cel:hover
+	{
+		-webkit-transform: rotate(19deg);
+	    -moz-transform: rotate(19deg);
+	    -o-transform: rotate(19deg);
+	    transform: rotate(19deg);
+	}
+
+	.columns-flex
+	{
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2em;
+		margin-top: 2em;
+	}
+
+	.columns-flex > *
+	{
+		flex-basis: calc((15em - 100%) * 999);
+		flex-grow: 1;
+		flex-shrink: 1;
+	}
+
+	/***********************************
+	** Footer Styles
+	***********************************/
+	#suscribe-footer
+	{
+		top: -20%;
+	}
+}
+
+@media only screen and (min-width: 901px)
+{
+	/***********************************
+	** First Section Styles
+	***********************************/
+	#intro
+	{
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.div-logo
+	{
+		margin-top: 18%;
+	}
+
+	.logo
+	{
+		width: 35%;
+	}
+
+	#stores-buttons
+	{
+		display: inline-flex;
+	}
+
+	h3
+	{
+		font-size: 1.5em;
+	}
+
+	.app-playstore-link-image
+	{
+		width: 80%;
+	}
+
+	.redes
+	{
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		align-content: center;
+		justify-content: center;
+		align-items: center;
+	}
+	.redes a
+	{
+		padding: 20px;
+	}
+
+	/***********************************
+	** Second Section Styles
+	***********************************/
+	.fade-in 
+	{
+    	opacity: 0;
+    	transition: opacity 700ms ease-in;
+	}
+
+	.fade-in.appear
+	{
+    	opacity: 1;
+	}
+		
+	.grid-wrapper {
+	    display: grid;
+	    grid-gap: 40px;
+		grid-template-columns: 1fr 1fr 1fr;
+	    margin-top: 3.5em;
+	    margin-bottom: 3em;
+	}
+
+	.box > image:hover
+	{
+		filter: brightness(120%);
+	}
+
+	.swiper-container, .swiper-wrapper
+	{
+		display: none;
+	}
+
+	/***********************************
+	** Footer Styles
+	***********************************/
+	#suscribe-footer
+	{
+		max-width: 30%;
+	}
+
+	footer .redes-link-image
+	{
+		width: 5%;
+	}
+}
+
+/* Large devices */
+@media only screen and (min-width: 1200px)
+{
+	/***********************************
+	** First Section Styles
+	***********************************/
+	.div-logo
+	{
+		margin-top: 11%;
+	}
+	
+	#damage .title-test:nth-child(1)
+	{
+		padding-top: 3%;
+	}
+
+	/***********************************
+	** Footer Styles
+	***********************************/
+	.redes-footer
+	{
+		padding: 1% 1%;
+		width: 30%;
+		margin-left: 35%;
+	}
+
+	footer .redes-link-image
+	{
+		width: 13%;
+	}
+}
+
+/* Extra large devices */
+@media only screen and (min-width: 1920px)
+{
+	/***********************************
+	** First Section Styles
+	***********************************/
+	.div-logo
+	{
+		margin-top: 12%;
+	}
+
+	#bt1, #bt2
+	{
+		padding: 5px 8px;
+		width: 10%;
+		height: 140%;
+		display: flex;
+		justify-content: center;
+	}
+
+	#bt1 > a, #bt2 > a
+	{
+		align-self: center;
+	}
+}
+
+
+
+
+
+

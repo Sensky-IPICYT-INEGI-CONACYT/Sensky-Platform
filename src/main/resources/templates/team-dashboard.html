@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>SenSky | Agendar capacitación</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <link rel="stylesheet" th:href="@{/Assets/css/reset.css}"/>
+    <link rel="stylesheet" th:href="@{/Assets/css/dashboard-styles.css}"/>
+    <link rel="stylesheet" th:href="@{/Assets/css/hamburgers.css}"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<div id="final-report" class="modal-component">
+    <div class="background"></div>
+    <div class="wrapper">
+        <h3>Reporte final del Taller de Conformación de Observatorios Ciudadanos Centinelas del Aire</h3>
+        <button type="button" onclick="closeLastReportModal()">cerrar</button>
+        <div class="survey">
+            <div class="section">
+                <h4 class="title">Nombres de los integrantes del grupo facilitador que participaron en el taller:</h4>
+                <div class="question">
+                    <p class="text">Encargado(s) del proyecto:</p>
+                    <button class="add-input" onclick="addInput(this)">+</button>
+                    <div class="input-wrapper">
+                        <input type="text" class="answer">
+                        <span onclick="removeInput(this)">x</span>
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="text">Observador(es):</p>
+                    <button class="add-input" onclick="addInput(this)">+</button>
+                    <div class="input-wrapper">
+                        <input type="text" class="answer">
+                        <span onclick="removeInput(this)">x</span>
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="text">Responsable(s) operativo(s):</p>
+                    <button class="add-input" onclick="addInput(this)">+</button>
+                    <div class="input-wrapper">
+                        <input type="text" class="answer">
+                        <span onclick="removeInput(this)">x</span>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <h4 class="title">Actividades realizadas</h4>
+                <div class="question">
+                    <p class="text">Institución en donde se impartó el taller:</p>
+                    <div class="input-wrapper">
+                        <input type="text" class="answer">
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="text">Fecha de taller:</p>
+                    <div class="input-wrapper">
+                        <input type="text" class="answer">
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="text">Hora de inicio:</p>
+                    <div class="input-wrapper">
+                        <input type="text" class="answer">
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="text">Hora de término:</p>
+                    <div class="input-wrapper">
+                        <input type="text" class="answer">
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="text">Número de centinelas (participantes):</p>
+                    <div class="input-wrapper">
+                        <input type="number" class="answer">
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="text">Descripción general de actividades:</p>
+                    <div class="input-wrapper">
+                        <textarea cols="5" class="answer"></textarea>
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="text">Dificultades presentadas en la realización de las actividades:</p>
+                    <div class="input-wrapper">
+                        <textarea cols="5" class="answer"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <h4 class="title">Autoevaluación</h4>
+                <p class="details">Señala en la siguiente tabla el nivel de cumplimiento para cada uno de los
+                    indicadores de la ejecución del taller de capacitación de facilitadores. En caso de que el
+                    cumplimiento no haya sido excelente, favor de especificar las razones en el campo
+                    “Observaciones”. </p>
+                <div class="question">
+                    <p class="text">Se realizó la presentación del grupo facilitador, así como del proyecto de manera
+                        general y se habló de la importancia de la participación de los asistentes.</p>
+                    <div class="input-wrapper">
+                        <input type="radio" id="ind_01a" name="ind_01" class="nivel" value="Excelente"><label
+                            for="ind_01a">Excelente</label>
+                        <input type="radio" id="ind_01b" name="ind_01" class="nivel" value="Bueno"><label for="ind_01b">Bueno</label>
+                        <input type="radio" id="ind_01c" name="ind_01" class="nivel" value="Regular"><label
+                            for="ind_01c">Regular</label>
+                        <input type="radio" id="ind_01d" name="ind_01" class="nivel" value="Insuficiente"><label
+                            for="ind_01d">Insuficiente</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" class="observaciones" placeholder="Observaciones">
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="text">Se tomó asistencia a los participantes.</p>
+                    <div class="input-wrapper">
+                        <input type="radio" id="ind_02a" name="ind_02" class="nivel" value="Excelente"><label
+                            for="ind_02a">Excelente</label>
+                        <input type="radio" id="ind_02b" name="ind_02" class="nivel" value="Bueno"><label for="ind_02b">Bueno</label>
+                        <input type="radio" id="ind_02c" name="ind_02" class="nivel" value="Regular"><label
+                            for="ind_02c">Regular</label>
+                        <input type="radio" id="ind_02d" name="ind_02" class="nivel" value="Insuficiente"><label
+                            for="ind_02d">Insuficiente</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" class="observaciones" placeholder="Observaciones">
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="text">Se aplicaron los cuestionarios de percepción de riesgo correspondientes al grupo de edad, a través de la aplicación móvil Sensky y se verificó que todos los participantes lo contestaran.</p>
+                    <div class="input-wrapper">
+                        <input type="radio" id="ind_03a" name="ind_03" class="nivel" value="Excelente"><label
+                            for="ind_03a">Excelente</label>
+                        <input type="radio" id="ind_03b" name="ind_03" class="nivel" value="Bueno"><label for="ind_03b">Bueno</label>
+                        <input type="radio" id="ind_03c" name="ind_03" class="nivel" value="Regular"><label
+                            for="ind_03c">Regular</label>
+                        <input type="radio" id="ind_03d" name="ind_03" class="nivel" value="Insuficiente"><label
+                            for="ind_03d">Insuficiente</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" class="observaciones" placeholder="Observaciones">
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="text">Se llevó a cabo la charla de sensibilización procurando un ambiente participativo y con un lenguaje adecuado para el grupo de edad de los participantes.</p>
+                    <div class="input-wrapper">
+                        <input type="radio" id="ind_04a" name="ind_04" class="nivel" value="Excelente"><label
+                            for="ind_04a">Excelente</label>
+                        <input type="radio" id="ind_04b" name="ind_04" class="nivel" value="Bueno"><label for="ind_04b">Bueno</label>
+                        <input type="radio" id="ind_04c" name="ind_04" class="nivel" value="Regular"><label
+                            for="ind_04c">Regular</label>
+                        <input type="radio" id="ind_04d" name="ind_04" class="nivel" value="Insuficiente"><label
+                            for="ind_04d">Insuficiente</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" class="observaciones" placeholder="Observaciones">
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="text">Se aplicó el cuestionario post correspondiente al grupo de edad, a través de la aplicación móvil Sensky y se verificó que todos los participantes lo contestaran.</p>
+                    <div class="input-wrapper">
+                        <input type="radio" id="ind_05a" name="ind_05" class="nivel" value="Excelente"><label
+                            for="ind_05a">Excelente</label>
+                        <input type="radio" id="ind_05b" name="ind_05" class="nivel" value="Bueno"><label for="ind_05b">Bueno</label>
+                        <input type="radio" id="ind_05c" name="ind_05" class="nivel" value="Regular"><label
+                            for="ind_05c">Regular</label>
+                        <input type="radio" id="ind_05d" name="ind_05" class="nivel" value="Insuficiente"><label
+                            for="ind_05d">Insuficiente</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" class="observaciones" placeholder="Observaciones">
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="text">Se llevó a cabo la dinámica de reforzamiento Kahoot</p>
+                    <div class="input-wrapper">
+                        <input type="radio" id="ind_06a" name="ind_06" class="nivel" value="Excelente"><label
+                            for="ind_06a">Excelente</label>
+                        <input type="radio" id="ind_06b" name="ind_06" class="nivel" value="Bueno"><label for="ind_06b">Bueno</label>
+                        <input type="radio" id="ind_06c" name="ind_06" class="nivel" value="Regular"><label
+                            for="ind_06c">Regular</label>
+                        <input type="radio" id="ind_06d" name="ind_06" class="nivel" value="Insuficiente"><label
+                            for="ind_06d">Insuficiente</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" class="observaciones" placeholder="Observaciones">
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="text">Se realizó la actividad del recorrido para la documentación ciudadana de acuerdo con los lineamientos señalados en el manual, orientando a los participantes sobre la toma de fotografías e incentivando el registro de la mayoría de fuentes de contaminación del aire detectadas.</p>
+                    <div class="input-wrapper">
+                        <input type="radio" id="ind_07a" name="ind_07" class="nivel" value="Excelente"><label
+                            for="ind_07a">Excelente</label>
+                        <input type="radio" id="ind_07b" name="ind_07" class="nivel" value="Bueno"><label for="ind_07b">Bueno</label>
+                        <input type="radio" id="ind_07c" name="ind_07" class="nivel" value="Regular"><label
+                            for="ind_07c">Regular</label>
+                        <input type="radio" id="ind_07d" name="ind_07" class="nivel" value="Insuficiente"><label
+                            for="ind_07d">Insuficiente</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" class="observaciones" placeholder="Observaciones">
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="text">Se realizó el cierre de la actividad, abriendo un espacio para la reflexión, dudas y comentarios  sobre la experiencia de los asistentes.</p>
+                    <div class="input-wrapper">
+                        <input type="radio" id="ind_08a" name="ind_08" class="nivel" value="Excelente"><label
+                            for="ind_08a">Excelente</label>
+                        <input type="radio" id="ind_08b" name="ind_08" class="nivel" value="Bueno"><label for="ind_08b">Bueno</label>
+                        <input type="radio" id="ind_08c" name="ind_08" class="nivel" value="Regular"><label
+                            for="ind_08c">Regular</label>
+                        <input type="radio" id="ind_08d" name="ind_08" class="nivel" value="Insuficiente"><label
+                            for="ind_08d">Insuficiente</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" class="observaciones" placeholder="Observaciones">
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="text">Todas las actividades se llevaron a cabo dentro del tiempo señalado, con una duración total no mayor a 1 h 30 min.</p>
+                    <div class="input-wrapper">
+                        <input type="radio" id="ind_09a" name="ind_09" class="nivel" value="Excelente"><label
+                            for="ind_09a">Excelente</label>
+                        <input type="radio" id="ind_09b" name="ind_09" class="nivel" value="Bueno"><label for="ind_09b">Bueno</label>
+                        <input type="radio" id="ind_09c" name="ind_09" class="nivel" value="Regular"><label
+                            for="ind_09c">Regular</label>
+                        <input type="radio" id="ind_09d" name="ind_09" class="nivel" value="Insuficiente"><label
+                            for="ind_09d">Insuficiente</label>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" class="observaciones" placeholder="Observaciones">
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="text">Por último, califica tu experiencia personal al llevar a cabo el taller de acuerdo con la siguiente escala: </p>
+                    <div class="input-wrapper">
+                        <input type="radio" id="escala-01a" name="escala-01" class="nivel" value="5"><label
+                            for="escala-01a">Excelente</label>
+                        <input type="radio" id="escala-01e" name="escala-01" class="nivel" value="4"><label for="escala-01e">Muy buena</label>
+                        <input type="radio" id="escala-01b" name="escala-01" class="nivel" value="3"><label for="escala-01b">Buena</label>
+                        <input type="radio" id="escala-01c" name="escala-01" class="nivel" value="2"><label
+                            for="escala-01c">Regular</label>
+                        <input type="radio" id="escala-01d" name="escala-01" class="nivel" value="1"><label
+                            for="escala-01d">Mala</label>
+                    </div>
+                </div>
+
+
+                <div class="question">
+                    <p class="text">¿Te gustaría agregar algún otro comentario, sugerencia u observación? </p>
+                    <div class="input-wrapper">
+                        <textarea cols="5" class="answer"></textarea>
+                    </div>
+                </div>
+                <div class="question">
+
+                    <button type="button" id="final-report-trigger" onclick="sendFinalReport(this)">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main>
+    <div id="nav-bar">
+        <div class="left">
+            <button class="hamburger hamburger--arrow" type="button" onclick="toggleSideBar()">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+            <a href="#"><img th:src="@{/Assets/img/logo/logo.png}" alt="SenSky Logo"/></a>
+        </div>
+        <div class="right">
+            <button onclick="window.location.href = 'logout';"><i class="fa fa-power-off"></i> salir</button>
+        </div>
+    </div>
+    <div id="side-bar">
+        <div class="container">
+            <img th:src="@{/Assets/img/profile.jpg}" alt="profile picture"/>
+        </div>
+        <div class="container">
+            <div class="item active"><p><i class="fa fa-th"></i> Capacitaciones</p></div>
+            <div class="item" onclick="window.location.href = 'new-workshop';"><p><i class="fa fa-plus"></i> Agregar</p>
+            </div>
+
+        </div>
+    </div>
+    <div id="content">
+        <div id="workshops" class="container visible">
+            <div class="header">
+                <h3>Capacitaciones de mi equipo:</h3>
+            </div>
+            <div class="body">
+                <div class="items-container">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+
+    let teamEmail = /*[[${session.get("user-name")}]]*/ 'default';
+    //
+
+    /*]]>*/
+
+
+    console.log(teamEmail);
+</script>
+
+<script>
+
+    let selectedHour;
+
+    $(function () {
+        $("#workshop-date").datepicker({
+            minDate: 1,
+            dateFormat: "dd-mm-yy"
+        });
+        $('#workshop-time').timepicker({
+            timeFormat: 'H:mm',
+            interval: 60,
+            defaultTime: '11',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true,
+            change: function (time) {
+                selectedHour = time.getHours()
+            }
+        });
+    });
+
+    function prepareWorkshopData() {
+        let datePieces = $("#workshop-date").val().split("-");
+        let selectedDate = new Date(parseInt(datePieces[2]), parseInt(datePieces[1]) - 1, parseInt(datePieces[0]));
+        let timestamp = selectedDate.getTime() + selectedHour * 60 * 60 * 1000;
+        $("#workshop-timestamp").val(timestamp);
+
+        console.log(selectedDate);
+        $("#new-workshop-form").submit();
+    }
+
+
+    function toggleSideBar() {
+        let node = "button.hamburger";
+        $(node).toggleClass("is-active");
+        if ($(node).hasClass("is-active")) {
+            showSideBar()
+        } else {
+            hideSideBar()
+        }
+    }
+
+    function showSideBar() {
+        $("#side-bar").addClass("visible");
+    }
+
+    function hideSideBar() {
+        $("#side-bar").removeClass("visible");
+    }
+
+    function displayContent(id) {
+        $("#content>div.visible").removeClass("visible");
+        $("#" + id).addClass("visible");
+        toggleSideBar();
+    }
+
+
+
+    $(function () {
+        $.getJSON("api/v1/" + btoa(teamEmail) + "/workshops/get", function (data) {
+            data.sort((a, b) => b["init-timestamp"] - a["init-timestamp"]).forEach(function (workshop) {
+                $(".items-container").append(createItem(workshop["init-timestamp"], workshop["place-name"], workshop["key"], workshop["report-id"]));
+            });
+        });
+    });
+
+    function utf8_to_b64(str) {
+        return window.btoa(unescape(encodeURIComponent(str)));
+    }
+
+
+    function createItem(timestamp, place, key, report) {
+        if (timestamp < Date.now()) {
+            if (report != undefined) {
+                return '<div class="item completed"><span>completo</span><p class="fechahora">' + millisToDateTime(timestamp) + '</p><h3 class="place-name">' + place + '</h3><h4>' + key + '</h4></div>';
+            } else {
+                return '<div class="item pending"><span>pendiente</span><p class="fechahora">' + millisToDateTime(timestamp) + '</p><h3 class="place-name">' + place + '</h3><h4>' + key + '</h4><button onclick="lastReportModal(' + "'" +  key + "'" + ')">agregar reporte</button></div>';
+            }
+        } else {
+            return '<div class="item prox"><span>agendado</span><p class="fechahora">' + millisToDateTime(timestamp) + '</p><h3 class="place-name">' + place + '</h3><h4>' + key + '</h4></div>';
+        }
+    }
+
+
+
+    function lastReportModal(key) {
+        console.log("display last report...");
+        $("#final-report").addClass("visible");
+        $("#final-report-trigger").attr("key", key);
+        console.log("done");
+    }
+
+    function closeLastReportModal() {
+        console.log("hide last report...");
+        $("#final-report").removeClass("visible");
+        $("#final-report-trigger").attr("key", "");
+        console.log("done");
+    }
+
+
+
+    function millisToDateTime(millis) {
+        let date = new Date(millis);
+
+        return ('0' + date.getDate()).slice(-2) + '/'
+            + ('0' + (date.getMonth() + 1)).slice(-2) + '/'
+            + date.getFullYear()
+            + " " + ("0" + date.getHours()).slice(-2) + ":"
+            + ("0" + date.getMinutes()).slice(-2);
+    }
+
+
+    function addInput(node) {
+        console.log("adding input: ", node);
+        let html = `<div class="input-wrapper"><input type="text" class="answer"><span onclick="removeInput(this)" >x</span></div>`;
+        $(node).parent().append(html);
+    }
+
+    function removeInput(node) {
+        console.log("removing input: ", node);
+        $(node).parent().remove();
+    }
+
+    function sendFinalReport(node) {
+        let currentKey = $(node).attr("key");
+        console.log("preparando reporte final! ", currentKey);
+        let report = [];
+        $.each($("#final-report .section"), function( i, section ) {
+            let tmpSection = {};
+            tmpSection["section"] = $(section).find(">.title")[0].textContent;
+            tmpSection["questions"] = []
+            $.each($(section).find(">.question"), function( j, question ) {
+                let tmpQuestion = {};
+                if ($(question).find("> p.text").length > 0)
+                    tmpQuestion["text"] = $(question).find("> p.text")[0].textContent;
+                tmpQuestion["answers"] = []
+                $.each($(question).find(">.input-wrapper"), function( k, wrapper ) {
+                    let inputs = $(wrapper).find("input");
+                    let textAreas = $(wrapper).find("textarea");
+                    if (inputs.length > 0) {
+                        tmpQuestion["answers"].push($(inputs[0]).val());
+                    } else if (textAreas.length > 0) {
+                        tmpQuestion["answers"].push($(textAreas[0]).val());
+                    }
+                });
+                tmpSection["questions"].push(tmpQuestion);
+            });
+            report.push(tmpSection);
+        });
+        console.log("REPORT: ", report);
+
+        $.ajax({
+            url: "api/v1/report/" + currentKey + "/append",
+            type:"POST",
+            data: {
+                "report": utf8_to_b64(JSON.stringify(report))
+            },
+            success: function(data){
+                console.log("Server said: ", data);
+                window.location.href = "team-dashboard";
+            }
+        })
+
+    }
+
+</script>
+
+</body>
+</html>
+
+
